@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import Todo from './Todo';
 import { TodoType } from '../../types/todo';
+import Text from './Text';
 
 function Practice2() {
   const [todos, setTodos] = useState<Array<TodoType>>([]);
@@ -17,6 +18,7 @@ function Practice2() {
 
   return (
     <div>
+      <Text color="red" fontSize="18px" />
       <button onClick={onClickFetchData}>Fetch TODO list</button>
       {todos.map((todo) => (
         <Todo

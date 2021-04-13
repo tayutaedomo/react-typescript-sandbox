@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { VFC } from 'react';
 
 import { TodoType } from '../../types/todo';
 
 //const Todo = (props: Pick<TodoType, 'userId' | 'title' | 'completed'>) => {
-const Todo = (props: Omit<TodoType, 'id'>) => {
+const Todo: VFC<Omit<TodoType, 'id'>> = (props) => {
   const { title, userId, completed = false } = props;
   const completeMark = completed ? '[x]' : '[ ]';
 
