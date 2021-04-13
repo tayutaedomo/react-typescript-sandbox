@@ -1,14 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { tokenToString } from 'typescript';
-import Todo from './Todo';
 
-type TodoType = {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
-};
+import Todo from './Todo';
+import { TodoType } from '../../types/todo';
 
 function Practice2() {
   const [todos, setTodos] = useState<Array<TodoType>>([]);

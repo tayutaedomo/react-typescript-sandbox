@@ -1,12 +1,9 @@
 import React from 'react';
 
-type TodoType = {
-  userId: number;
-  title: string;
-  completed?: boolean;
-};
+import { TodoType } from '../../types/todo';
 
-const Todo = (props: TodoType) => {
+//const Todo = (props: Pick<TodoType, 'userId' | 'title' | 'completed'>) => {
+const Todo = (props: Omit<TodoType, 'id'>) => {
   const { title, userId, completed = false } = props;
   const completeMark = completed ? '[x]' : '[ ]';
 
