@@ -51,6 +51,11 @@ const cards: Array<HomeCardType> = [
     content: 'Todo, Text, UserProfile',
     to: '/practice2',
   },
+  {
+    headline: 'Custom Hook',
+    content: '',
+    to: '/custom_hook',
+  },
 ];
 
 export default Home;

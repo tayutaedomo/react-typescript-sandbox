@@ -5,6 +5,7 @@ import Home from '../components/home/Home';
 import Practices from '../components/practices/Practices';
 import Practice2 from '../components/practice2/Practice2';
 import DefaultLayout from '../components/layouts/DefaultLayout';
+import CustomHook from '../components/custom_hook/CustomHook';
 
 const router = () => {
   return (
@@ -20,6 +21,9 @@ const router = () => {
         </Route>
         <Route path="/practices">
           <Practices />
+        </Route>
+        <Route path="/custom_hook">
+          <CustomHook />
         </Route>
       </Switch>
     </BrowserRouter>
