@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Practice2 from './practice2/Practice2';
+import Router from '../router/router';
 
 function App() {
   return (
-    <div>
-      <Practice2 />
-    </div>
+    <>
+      <Router />
+    </>
   );
 }
 
