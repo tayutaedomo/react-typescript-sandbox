@@ -1,6 +1,6 @@
 import React, { ReactNode, VFC } from 'react';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { CssBaseline } from '@material-ui/core';
+import { Container, CssBaseline } from '@material-ui/core';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -17,7 +17,9 @@ const DefaultLayout: VFC<Props> = (props) => {
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
       <Header />
-      {children}
+      <main>
+        <Container maxWidth="md">{children}</Container>
+      </main>
       <Footer />
     </MuiThemeProvider>
   );
