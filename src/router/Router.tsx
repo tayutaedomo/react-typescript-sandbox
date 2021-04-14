@@ -10,6 +10,7 @@ import CustomHook from '../components/custom_hook/CustomHook';
 import ChakraUILogin from '../components/chakraui/pages/Login';
 import { chakuraUIRouters } from './ChakuraUIRoutes';
 import ChakraUIProvider from '../providers/ChakraUIProvider';
+import ChakuraUIHeaderLayout from '../components/chakraui/templates/HeaderLayout';
 
 const Router = memo(() => {
   return (
@@ -45,7 +46,9 @@ const Router = memo(() => {
                     exact={route.exact}
                     path={`${url}${route.path}`}
                   >
-                    {route.children}
+                    <ChakuraUIHeaderLayout>
+                      {route.children}
+                    </ChakuraUIHeaderLayout>
                   </Route>
                 ))}
                 <Redirect from="/chakraui/home/*" to="/chakraui/home" />
