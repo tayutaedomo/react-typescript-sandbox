@@ -6,14 +6,21 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import UserCard from '../organisms/user/UserCard';
 import UserDetailModal from '../organisms/user/UserDetailModal';
 import { useAllUsers } from '../hooks/useAllUsers';
+import { useSelectUser } from '../hooks/useSelectUser';
 
 const UserManagement: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { getUsers, loading, users } = useAllUsers();
+  const { onSelectUser, selectedUser } = useSelectUser();
 
   useEffect(() => getUsers(), [getUsers]);
 
-  const onClickUser = useCallback(() => onOpen(), []);
+  const onClickUser = useCallback(
+    (id: number) => {
+      onSelectUser({ id, users, onOpen });
+    },
+    [onSelectUser, onOpen, users]
+  );
 
   return (
     <>
@@ -26,6 +33,7 @@ const UserManagement: VFC = memo(() => {
           {users.map((user) => (
             <WrapItem key={user.id} mx="auto">
               <UserCard
+                id={user.id}
                 imageUrl="https://source.unsplash.com/random"
                 userName={user.username}
                 fullName={user.name}
@@ -35,7 +43,7 @@ const UserManagement: VFC = memo(() => {
           ))}
         </Wrap>
       )}
-      <UserDetailModal isOpen={isOpen} onClose={onClose} />
+      <UserDetailModal user={selectedUser} isOpen={isOpen} onClose={onClose} />
     </>
   );
 });
