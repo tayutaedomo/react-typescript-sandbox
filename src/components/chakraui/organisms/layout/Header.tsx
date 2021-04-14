@@ -12,15 +12,15 @@ const Header: VFC = memo(() => {
 
   const onClickHome = useCallback(() => {
     history.push('/chakraui/home');
-  }, []);
+  }, [history]);
 
   const onClickUsers = useCallback(() => {
     history.push('/chakraui/home/user_management');
-  }, []);
+  }, [history]);
 
   const onClickSetting = useCallback(() => {
     history.push('/chakraui/home/setting');
-  }, []);
+  }, [history]);
 
   return (
     <>

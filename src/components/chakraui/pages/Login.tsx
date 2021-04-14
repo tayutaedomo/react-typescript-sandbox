@@ -1,7 +1,8 @@
 import { memo, VFC } from 'react';
 import { Box, Divider, Flex, Heading, Stack } from '@chakra-ui/layout';
 import { Input } from '@chakra-ui/input';
-import { Button } from '@chakra-ui/button';
+
+import PrimaryButton from '../atoms/button/PrimaryButton';
 
 const Login: VFC = memo(() => {
   return (
@@ -13,9 +14,7 @@ const Login: VFC = memo(() => {
         <Divider my={4} />
         <Stack spacing={6} py={4} px={10}>
           <Input placeholder="User ID" />
-          <Button bg="teal.400" color="white" _hover={{ opacity: 0.8 }}>
-            Login
-          </Button>
+          <PrimaryButton>Login</PrimaryButton>
         </Stack>
       </Box>
     </Flex>
