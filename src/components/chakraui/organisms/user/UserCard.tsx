@@ -1,4 +1,4 @@
-import React, { memo, ReactNode, VFC } from 'react';
+import React, { memo, VFC } from 'react';
 import { Box, Stack, Text } from '@chakra-ui/layout';
 import { Image } from '@chakra-ui/image';
 
