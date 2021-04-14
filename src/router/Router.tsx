@@ -7,10 +7,8 @@ import Practices from '../components/practices/Practices';
 import Practice2 from '../components/practice2/Practice2';
 import DefaultLayout from '../components/layouts/DefaultLayout';
 import CustomHook from '../components/custom_hook/CustomHook';
-import ChakuraUIProvider from '../providers/ChakraUIProvider';
 import ChakraUILogin from '../components/chakraui/pages/Login';
 import { chakuraUIRouters } from './ChakuraUIRoutes';
-import { ChakraProvider } from '@chakra-ui/react';
 import ChakraUIProvider from '../providers/ChakraUIProvider';
 
 const Router = memo(() => {
