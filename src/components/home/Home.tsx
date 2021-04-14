@@ -17,11 +17,7 @@ const Home = () => {
   const renderCard = (card: HomeCardType) => {
     return (
       <Grid item xs={12} sm={6} md={4} key={card.to}>
-        <HomeCard
-          headline={card.headline}
-          content={card.content}
-          to={card.to}
-        />
+        <HomeCard card={card} />
       </Grid>
     );
   };
@@ -55,6 +51,19 @@ const cards: Array<HomeCardType> = [
     headline: 'Custom Hook',
     content: '',
     to: '/custom_hook',
+  },
+  {
+    headline: 'Chakra UI',
+    content: (
+      <a
+        href="https://chakra-ui.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Reference
+      </a>
+    ),
+    to: '/chakraui',
   },
 ];
 

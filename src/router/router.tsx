@@ -6,6 +6,7 @@ import Practices from '../components/practices/Practices';
 import Practice2 from '../components/practice2/Practice2';
 import DefaultLayout from '../components/layouts/DefaultLayout';
 import CustomHook from '../components/custom_hook/CustomHook';
+import ChakraUI from '../components/chakraui/ChakraUI';
 
 const router = () => {
   return (
@@ -24,6 +25,9 @@ const router = () => {
         </Route>
         <Route path="/custom_hook">
           <CustomHook />
+        </Route>
+        <Route path="/chakraui">
+          <ChakraUI />
         </Route>
       </Switch>
     </BrowserRouter>

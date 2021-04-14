@@ -1,5 +1,7 @@
+import { ReactNode } from 'react';
+
 export type HomeCardType = {
   headline: string;
-  content: string;
+  content: string | ReactNode;
   to: string;
 };
