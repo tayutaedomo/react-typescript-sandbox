@@ -6,6 +6,7 @@ import {
   DrawerContent,
   DrawerOverlay,
 } from '@chakra-ui/modal';
+import { Divider } from '@chakra-ui/layout';
 
 type Props = {
   onClose: () => void;
@@ -13,10 +14,18 @@ type Props = {
   onClickHome: () => void;
   onClickUsers: () => void;
   onClickSetting: () => void;
+  onClickLogout: () => void;
 };
 
 const MenuDrawer: VFC<Props> = memo((props) => {
-  const { onClose, isOpen, onClickHome, onClickSetting, onClickUsers } = props;
+  const {
+    onClose,
+    isOpen,
+    onClickHome,
+    onClickSetting,
+    onClickUsers,
+    onClickLogout,
+  } = props;
 
   return (
     <Drawer placement="left" size="xs" onClose={onClose} isOpen={isOpen}>
@@ -31,6 +40,10 @@ const MenuDrawer: VFC<Props> = memo((props) => {
             </Button>
             <Button w="100%" onClick={onClickSetting}>
               Setting
+            </Button>
+            <Divider />
+            <Button w="100%" onClick={onClickLogout}>
+              Logout
             </Button>
           </DrawerBody>
         </DrawerContent>

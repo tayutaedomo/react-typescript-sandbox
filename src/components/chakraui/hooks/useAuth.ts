@@ -38,5 +38,10 @@ export const useAuth = () => {
     [history, showMessage, setLoginUser]
   );
 
-  return { login, loading };
+  const logout = useCallback(() => {
+    setLoginUser(null);
+    history.push('/chakraui');
+  }, [setLoginUser, history]);
+
+  return { login, logout, loading };
 };
