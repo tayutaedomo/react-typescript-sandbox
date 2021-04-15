@@ -5,10 +5,12 @@ import { useDisclosure } from '@chakra-ui/hooks';
 
 import MenuIconButton from '../../atoms/button/MenuIconButton';
 import MenuDrawer from '../../molecules/MenuDrawer';
+import { useAuth } from '../../hooks/useAuth';
 
 const Header: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const history = useHistory();
+  const { logout } = useAuth();
 
   const onClickHome = useCallback(() => {
     history.push('/chakraui/home');
@@ -21,6 +23,8 @@ const Header: VFC = memo(() => {
   const onClickSetting = useCallback(() => {
     history.push('/chakraui/home/setting');
   }, [history]);
+
+  const onClickLogout = useCallback(() => logout(), [logout]);
 
   return (
     <>
@@ -52,7 +56,10 @@ const Header: VFC = memo(() => {
           <Box pr={4}>
             <Link onClick={onClickUsers}>Users</Link>
           </Box>
-          <Link onClick={onClickSetting}>Setting</Link>
+          <Box pr={4}>
+            <Link onClick={onClickSetting}>Setting</Link>
+          </Box>
+          <Link onClick={onClickLogout}>Logout</Link>
         </Flex>
         <MenuIconButton onOpen={onOpen} />
       </Flex>
@@ -62,6 +69,7 @@ const Header: VFC = memo(() => {
         onClickHome={onClickHome}
         onClickUsers={onClickUsers}
         onClickSetting={onClickSetting}
+        onClickLogout={onClickLogout}
       />
     </>
   );
