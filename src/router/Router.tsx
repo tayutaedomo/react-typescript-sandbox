@@ -8,10 +8,10 @@ import Practice2 from '../components/practice2/Practice2';
 import DefaultLayout from '../components/layouts/DefaultLayout';
 import CustomHook from '../components/custom_hook/CustomHook';
 import ChakraUILogin from '../components/chakraui/pages/Login';
-import { chakuraUIRouters } from './ChakuraUIRoutes';
+import { chakraUIRouters } from './ChakraUIRoutes';
 import ChakraUIPrivateRoute from './ChakraUIPrivateRoute';
 import ChakraUIProvider from '../providers/ChakraUIProvider';
-import ChakuraUIHeaderLayout from '../components/chakraui/templates/HeaderLayout';
+import ChakraUIHeaderLayout from '../components/chakraui/templates/HeaderLayout';
 
 const Router = memo(() => {
   return (
@@ -41,15 +41,15 @@ const Router = memo(() => {
           render={({ match: { url } }) => (
             <ChakraUIProvider>
               <Switch>
-                {chakuraUIRouters.map((route) => (
+                {chakraUIRouters.map((route) => (
                   <ChakraUIPrivateRoute
                     key={route.path}
                     exact={route.exact}
                     path={`${url}${route.path}`}
                   >
-                    <ChakuraUIHeaderLayout>
+                    <ChakraUIHeaderLayout>
                       {route.children}
-                    </ChakuraUIHeaderLayout>
+                    </ChakraUIHeaderLayout>
                   </ChakraUIPrivateRoute>
                 ))}
                 <Redirect from="/chakraui/home/*" to="/chakraui/home" />
