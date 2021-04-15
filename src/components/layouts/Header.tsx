@@ -32,6 +32,11 @@ const Header = () => {
           >
             <MenuIcon />
           </IconButton>
+          <MenuDrawer
+            open={open}
+            onOpen={onDrawerOpen}
+            onClose={onDrawerClose}
+          />
           <Typography variant="h6" color="inherit" noWrap>
             <div style={{ cursor: 'pointer' }} onClick={onLinkClick}>
               React Typescript Sandbox
@@ -39,7 +44,6 @@ const Header = () => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <MenuDrawer open={open} onClose={onDrawerClose} />
     </header>
   );
 };
