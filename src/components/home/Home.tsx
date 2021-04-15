@@ -36,7 +36,7 @@ const Home = () => {
   );
 };
 
-const cards: Array<HomeCardType> = [
+export const cards: Array<HomeCardType> = [
   {
     headline: 'Practices',
     content: 'Types',
