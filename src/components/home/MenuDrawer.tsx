@@ -28,13 +28,16 @@ const MenuDrawer: VFC<Props> = (props) => {
     >
       <Divider />
       <List>
-        {cards.map((card) => (
-          <NavLink key={card.to} to={card.to}>
-            <ListItem button>
-              <ListItemText primary={card.headline} />
-            </ListItem>
-          </NavLink>
-        ))}
+        {cards
+          .slice()
+          .reverse()
+          .map((card) => (
+            <NavLink key={card.to} to={card.to}>
+              <ListItem button>
+                <ListItemText primary={card.headline} />
+              </ListItem>
+            </NavLink>
+          ))}
       </List>
     </SwipeableDrawer>
   );
