@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme: Theme) =>
     drawerPaper: {
       width: drawerWidth,
     },
+    toolbar: theme.mixins.toolbar,
     link: {
       textDecoration: 'none',
       color: theme.palette.text.secondary,
@@ -50,6 +51,7 @@ const MenuDrawer: VFC<Props> = (props) => {
       className={classes.drawer}
       classes={{ paper: classes.drawerPaper }}
     >
+      <div className={classes.toolbar} />
       <List>
         {cards
           .slice()
