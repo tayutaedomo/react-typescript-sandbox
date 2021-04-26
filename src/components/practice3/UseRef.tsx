@@ -28,6 +28,7 @@ const UseRef: VFC = () => {
 
   return (
     <>
+      <Typography variant="h4">UseRef</Typography>
       <Box>
         <Typography variant="h6">Value: {value}</Typography>
         <Button variant="contained" color="primary" onClick={increment}>

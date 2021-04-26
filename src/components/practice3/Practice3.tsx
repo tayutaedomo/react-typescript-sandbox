@@ -1,14 +1,17 @@
 import React, { VFC } from 'react';
+import { Box, Divider } from '@material-ui/core';
+
 import UseRef from './UseRef';
-import { Box, Typography } from '@material-ui/core';
+import UseReducer from './UseReducer';
 
 const Practice3: VFC = () => {
   return (
     <Box py={2}>
-      <Typography variant="h3" gutterBottom>
-        Practice3
-      </Typography>
       <UseRef />
+      <Box py={4}>
+        <Divider />
+      </Box>
+      <UseReducer />
     </Box>
   );
 };
