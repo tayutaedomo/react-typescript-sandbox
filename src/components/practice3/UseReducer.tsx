@@ -4,7 +4,10 @@ import React, { useReducer } from 'react';
 type StateType = { count: number };
 const initialState: StateType = { count: 0 };
 
-type ActionType = { type: 'decrement' | 'increment' | 'reset' };
+type ActionType = {
+  type: 'decrement' | 'increment' | 'reset' | 'add';
+  num?: number;
+};
 
 function reducer(state: StateType, action: ActionType): StateType | never {
   switch (action.type) {
@@ -14,6 +17,8 @@ function reducer(state: StateType, action: ActionType): StateType | never {
       return { count: state.count - 1 };
     case 'reset':
       return initialState;
+    case 'add':
+      return { count: state.count + action.num };
     default:
       throw new Error();
   }
@@ -29,6 +34,13 @@ const UseReducer = () => {
         <Button
           variant="contained"
           color="primary"
+          onClick={() => dispatch({ type: 'add', num: -5 })}
+        >
+          -5
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
           onClick={() => dispatch({ type: 'decrement' })}
         >
           -
@@ -39,6 +51,13 @@ const UseReducer = () => {
           onClick={() => dispatch({ type: 'increment' })}
         >
           +
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => dispatch({ type: 'add', num: 5 })}
+        >
+          +5
         </Button>
         <Button
           variant="contained"
