@@ -12,7 +12,6 @@ import {
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuDrawer from '../home/MenuDrawer';
 
-const styles = (theme) => ({});
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     appBar: {
