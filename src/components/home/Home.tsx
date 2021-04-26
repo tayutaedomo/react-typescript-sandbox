@@ -65,6 +65,11 @@ export const cards: Array<HomeCardType> = [
     ),
     to: '/chakraui',
   },
+  {
+    headline: 'Practice3',
+    content: 'useState, useRef, useEffect, useReducer',
+    to: '/practice3',
+  },
 ];
 
 export default Home;

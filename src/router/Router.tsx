@@ -12,6 +12,7 @@ import { chakraUIRouters } from './ChakraUIRoutes';
 import ChakraUIPrivateRoute from './ChakraUIPrivateRoute';
 import ChakraUIProvider from '../providers/ChakraUIProvider';
 import ChakraUIHeaderLayout from '../components/chakraui/templates/HeaderLayout';
+import Practice3 from '../components/practice3/Practice3';
 
 const Router = memo(() => {
   return (
@@ -22,11 +23,11 @@ const Router = memo(() => {
             <Home />
           </DefaultLayout>
         </Route>
-        <Route path="/practice2">
-          <Practice2 />
-        </Route>
         <Route path="/practices">
           <Practices />
+        </Route>
+        <Route path="/practice2">
+          <Practice2 />
         </Route>
         <Route path="/custom_hook">
           <CustomHook />
@@ -57,6 +58,11 @@ const Router = memo(() => {
             </ChakraUIProvider>
           )}
         />
+        <Route path="/practice3">
+          <DefaultLayout>
+            <Practice3 />
+          </DefaultLayout>
+        </Route>
         <Route path="*">
           <Page404 />
         </Route>

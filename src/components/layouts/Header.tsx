@@ -1,8 +1,25 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
+import {
+  AppBar,
+  createStyles,
+  IconButton,
+  makeStyles,
+  Theme,
+  Toolbar,
+  Typography,
+} from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuDrawer from '../home/MenuDrawer';
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    appBar: {
+      // zIndex: theme.zIndex.drawer + 1,
+      zIndex: theme.zIndex.modal + 1,
+    },
+  })
+);
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -20,9 +37,11 @@ const Header = () => {
     setOpen(false);
   };
 
+  const classes = useStyles();
+
   return (
     <header>
-      <AppBar position="relative">
+      <AppBar position="relative" className={classes.appBar}>
         <Toolbar>
           <IconButton
             color="inherit"
