@@ -10,7 +10,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import MenuDrawer from '../home/MenuDrawer';
+import MenuDrawer from './MenuDrawer';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
