@@ -5,7 +5,7 @@ import Page404 from '../components/Page404';
 import Home from '../components/home/Home';
 import Practices from '../components/practices/Practices';
 import Practice2 from '../components/practice2/Practice2';
-import DefaultLayout from '../components/layouts/DefaultLayout';
+import DefaultLayout from '../components/layout/DefaultLayout';
 import CustomHook from '../components/custom_hook/CustomHook';
 import ChakraUILogin from '../components/chakraui/pages/Login';
 import { chakraUIRouters } from './ChakraUIRoutes';
