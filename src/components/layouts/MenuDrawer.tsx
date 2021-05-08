@@ -10,7 +10,7 @@ import {
   Theme,
 } from '@material-ui/core';
 
-import { cards } from './Home';
+import { cards } from '../home/Home';
 import { NavLink } from 'react-router-dom';
 
 const drawerWidth = 240;
