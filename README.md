@@ -1,6 +1,6 @@
 # react-typescript-sandbox
 
-Try React with Typescript.
+My sandbox for React x Typescript
 
 ## Setup
 
