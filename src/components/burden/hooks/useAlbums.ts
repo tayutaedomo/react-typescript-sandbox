@@ -14,14 +14,16 @@ export const useAlbums = () => {
       const url = 'https://jsonplaceholder.typicode.com/albums';
       const albums = (await axios.get<Array<Album>>(url)).data.slice(0, 2);
 
-      for (const album of albums) {
-        const url = `https://jsonplaceholder.typicode.com/albums/${album.id}/photos`;
-        const photos = (await axios.get<Array<AlbumPhoto>>(url)).data.slice(
-          0,
-          3
-        );
-        album.photos = photos;
-      }
+      await Promise.all(
+        albums.map(async (album) => {
+          const url = `https://jsonplaceholder.typicode.com/albums/${album.id}/photos`;
+          const photos = (await axios.get<Array<AlbumPhoto>>(url)).data.slice(
+            0,
+            3
+          );
+          album.photos = photos;
+        })
+      );
 
       setAlbums(albums);
       setLoading(false);
