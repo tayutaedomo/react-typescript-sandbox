@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import axios from 'axios';
 
 import { Album, AlbumPhoto } from '../../../types/api/album';
@@ -7,7 +7,7 @@ export const useAlbums = () => {
   const [albums, setAlbums] = useState<Array<Album>>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const getAlbums = () => {
+  const getAlbums = useCallback(() => {
     setLoading(true);
 
     const fetchAlbums = async () => {
@@ -28,7 +28,7 @@ export const useAlbums = () => {
     };
 
     fetchAlbums();
-  };
+  }, []);
 
   return { getAlbums, loading, albums };
 };

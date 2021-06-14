@@ -5,7 +5,7 @@ import { useAlbums } from './hooks/useAlbums';
 const Burden = () => {
   const { getAlbums, loading, albums } = useAlbums();
 
-  useEffect(() => getAlbums(), []);
+  useEffect(() => getAlbums(), [getAlbums]);
 
   return (
     <>
@@ -31,6 +31,7 @@ const Burden = () => {
                           key={photo.id}
                           width={32}
                           src={photo.thumbnailUrl}
+                          alt={photo.title}
                         />
                       );
                     })}
