@@ -12,7 +12,14 @@ export const useAlbums = () => {
 
     const fetchAlbums = async () => {
       const url = 'https://jsonplaceholder.typicode.com/albums';
-      const albums = (await axios.get<Array<Album>>(url)).data.slice(0, 2);
+      const albums = (await axios.get<Array<Album>>(url)).data.slice(0, 3);
+
+      for (const album of albums) {
+        album.photos = [];
+      }
+
+      setAlbums(albums);
+      setLoading(false);
 
       await Promise.all(
         albums.map(async (album) => {
@@ -22,11 +29,10 @@ export const useAlbums = () => {
             3
           );
           album.photos = photos;
+
+          setAlbums([...albums]);
         })
       );
-
-      setAlbums(albums);
-      setLoading(false);
     };
 
     fetchAlbums();
