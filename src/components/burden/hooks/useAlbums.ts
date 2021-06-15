@@ -10,9 +10,60 @@ export const useAlbums = () => {
   const getAlbums = useCallback(() => {
     setLoading(true);
 
-    const fetchAlbums = async () => {
-      const url = 'https://jsonplaceholder.typicode.com/albums';
-      const albums = (await axios.get<Array<Album>>(url)).data.slice(0, 3);
+    const fetch = async () => {
+      const albums = (await fetchAlbums()).data.slice(0, 2);
+
+      for (const album of albums) {
+        const res = await fetchAlbumPhotos(album.id);
+        album.photos = res.data.slice(0, 3);
+      }
+
+      setAlbums(albums);
+      setLoading(false);
+    };
+
+    fetch();
+  }, []);
+
+  return { getAlbums, loading, albums };
+};
+
+export const useAlbums2 = () => {
+  const [albums, setAlbums] = useState<Array<Album>>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const getAlbums = useCallback(() => {
+    setLoading(true);
+
+    const fetch = async () => {
+      const albums = (await fetchAlbums()).data.slice(2, 4);
+
+      await Promise.all(
+        albums.map(async (album) => {
+          const res = await fetchAlbumPhotos(album.id);
+          album.photos = res.data.slice(0, 3);
+        })
+      );
+
+      setAlbums(albums);
+      setLoading(false);
+    };
+
+    fetch();
+  }, []);
+
+  return { getAlbums, loading, albums };
+};
+
+export const useAlbums3 = () => {
+  const [albums, setAlbums] = useState<Array<Album>>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const getAlbums = useCallback(() => {
+    setLoading(true);
+
+    const fetch = async () => {
+      const albums = (await fetchAlbums()).data.slice(4, 6);
 
       for (const album of albums) {
         album.photos = [];
@@ -23,20 +74,26 @@ export const useAlbums = () => {
 
       await Promise.all(
         albums.map(async (album) => {
-          const url = `https://jsonplaceholder.typicode.com/albums/${album.id}/photos`;
-          const photos = (await axios.get<Array<AlbumPhoto>>(url)).data.slice(
-            0,
-            3
-          );
-          album.photos = photos;
+          const res = await fetchAlbumPhotos(album.id);
+          album.photos = res.data.slice(0, 3);
 
           setAlbums([...albums]);
         })
       );
     };
 
-    fetchAlbums();
+    fetch();
   }, []);
 
   return { getAlbums, loading, albums };
+};
+
+const fetchAlbums = async () => {
+  const url = 'https://jsonplaceholder.typicode.com/albums';
+  return await axios.get<Array<Album>>(url);
+};
+
+const fetchAlbumPhotos = async (albumId: number) => {
+  const url = `https://jsonplaceholder.typicode.com/albums/${albumId}/photos`;
+  return await axios.get<Array<AlbumPhoto>>(url);
 };

@@ -1,48 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, VFC } from 'react';
 
-import { useAlbums } from './hooks/useAlbums';
+import BurdenResults from './BurdenResults';
+import { useAlbums, useAlbums2, useAlbums3 } from './hooks/useAlbums';
 
-const Burden = () => {
+const Burden: VFC = () => {
   const { getAlbums, loading, albums } = useAlbums();
+  const retUseAlbums2 = useAlbums2();
+  const retUseAlbums3 = useAlbums3();
 
-  useEffect(() => getAlbums(), [getAlbums]);
+  useEffect(() => {
+    getAlbums();
+    retUseAlbums2.getAlbums();
+    retUseAlbums3.getAlbums();
+  }, [getAlbums]);
 
   return (
     <>
-      {!loading && (
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Photos</th>
-            </tr>
-          </thead>
-          <tbody>
-            {albums.map((album) => {
-              return (
-                <tr key={`album${album.id}`}>
-                  <td>{album.id}</td>
-                  <td>{album.title}</td>
-                  <td>
-                    {album.photos.map((photo) => {
-                      return (
-                        <img
-                          key={photo.id}
-                          width={32}
-                          src={photo.thumbnailUrl}
-                          alt={photo.title}
-                        />
-                      );
-                    })}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      )}
-      {loading && <div>Now loading...</div>}
+      <BurdenResults loading={loading} albums={albums} />
+      <BurdenResults
+        loading={retUseAlbums2.loading}
+        albums={retUseAlbums2.albums}
+      />
+      <BurdenResults
+        loading={retUseAlbums3.loading}
+        albums={retUseAlbums3.albums}
+      />
     </>
   );
 };
