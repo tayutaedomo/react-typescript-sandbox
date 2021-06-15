@@ -70,6 +70,19 @@ export const cards: Array<HomeCardType> = [
     content: 'useState, useRef, useEffect, useReducer',
     to: '/practice3',
   },
+  {
+    headline: 'N+1 Technique',
+    content: (
+      <a
+        href="https://dev.classmethod.jp/articles/frontend_n_1_reduce_burden/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Reference
+      </a>
+    ),
+    to: '/burden',
+  },
 ];
 
 export default Home;
