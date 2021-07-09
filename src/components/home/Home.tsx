@@ -83,6 +83,19 @@ export const cards: Array<HomeCardType> = [
     ),
     to: '/burden',
   },
+  {
+    headline: 'Awesome Hooks',
+    content: (
+      <a
+        href="https://qiita.com/baby-degu/items/52dbb382bbaf6c43e2db"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Reference
+      </a>
+    ),
+    to: '/awesome_hooks',
+  },
 ];
 
 export default Home;
