@@ -1,18 +1,23 @@
 import React, { VFC } from 'react';
-import { List, ListItem, ListItemText } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Box, Typography } from '@material-ui/core';
+
+import { useTimeout } from './hooks/useTimeout';
+import { useState } from 'react';
 
 const AwesomeHooks: VFC = () => {
+  const [nowText, setNowText] = useState<string>(new Date().toISOString());
+
+  useTimeout(() => {
+    const text = new Date().toISOString() + ', Updated';
+    console.log(text);
+    setNowText(text);
+  }, 2000);
+
   return (
-    <>
-      <List>
-        <Link to={''}>
-          <ListItem>
-            <ListItemText primary={'useTimeout'} />
-          </ListItem>
-        </Link>
-      </List>
-    </>
+    <Box py={2}>
+      <Typography variant="h4">useTimeout</Typography>
+      <Typography>{nowText}</Typography>
+    </Box>
   );
 };
 
