@@ -1,6 +1,6 @@
 import React, { VFC, useRef } from 'react';
 import { Box, Button, Typography } from '@material-ui/core';
-import { useClickInside } from './hooks/useClickInside';
+import { useClickInside } from './hooks/useClick';
 
 type HitBoxProps = {
   onClickInside: () => void;
