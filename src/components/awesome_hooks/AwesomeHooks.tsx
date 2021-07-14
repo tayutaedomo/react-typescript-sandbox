@@ -4,6 +4,7 @@ import UseTimeout from './UseTimeout';
 import UsePrevious from './UsePrevious';
 import UseClickInside from './UseClickInside';
 import UseClickOutside from './UseClickOutside';
+import UseFetch from './UseFetch';
 
 const AwesomeHooks: VFC = () => {
   return (
@@ -12,6 +13,7 @@ const AwesomeHooks: VFC = () => {
       <UsePrevious />
       <UseClickInside />
       <UseClickOutside />
+      <UseFetch />
     </>
   );
 };
