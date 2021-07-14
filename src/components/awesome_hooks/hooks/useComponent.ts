@@ -5,3 +5,12 @@ export const useComponentDidMount = (onMountHandler) => {
     onMountHandler();
   }, []);
 };
+
+export const useComponentWillUnmount = (onUnmountHandler) => {
+  useEffect(
+    () => () => {
+      onUnmountHandler();
+    },
+    []
+  );
+};
