@@ -15,7 +15,7 @@ const UseTimeout: VFC = () => {
 
   return (
     <Box py={2}>
-      <Typography variant="h4">useTimeout</Typography>
+      <Typography variant="h5">1: useTimeout</Typography>
       <Typography>{nowText}</Typography>
     </Box>
   );

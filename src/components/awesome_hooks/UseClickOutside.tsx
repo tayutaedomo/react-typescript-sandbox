@@ -39,7 +39,7 @@ const HitBox: VFC<HitBoxProps> = ({ onClickOutside }) => {
 const UseClickOutside: VFC = () => {
   return (
     <Box py={2}>
-      <Typography variant="h4">useClickOutside</Typography>
+      <Typography variant="h5">4: useClickOutside</Typography>
       <HitBox onClickOutside={() => alert("Don't hit the box!")} />
     </Box>
   );

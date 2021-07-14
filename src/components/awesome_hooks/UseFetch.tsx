@@ -9,7 +9,7 @@ const UseFetch: VFC = () => {
 
   return (
     <Box py={2}>
-      <Typography variant="h4">useFetch</Typography>
+      <Typography variant="h5">5: useFetch</Typography>
       {!res.response ? (
         <Typography>Loading...</Typography>
       ) : (

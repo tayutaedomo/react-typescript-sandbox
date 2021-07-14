@@ -20,7 +20,7 @@ const HitBox: VFC<HitBoxProps> = ({ onClickInside }) => {
 const UseClickInside: VFC = () => {
   return (
     <Box py={2}>
-      <Typography variant="h4">useClickInside</Typography>
+      <Typography variant="h5">3: useClickInside</Typography>
       <HitBox onClickInside={() => alert('Hit the box!')} />
     </Box>
   );

@@ -9,7 +9,7 @@ const UsePrevious: VFC = () => {
 
   return (
     <Box py={2}>
-      <Typography variant="h4">usePrevious</Typography>
+      <Typography variant="h5">2: usePrevious</Typography>
       <p>
         Current: {value} - Previous: {lastValue}
       </p>
