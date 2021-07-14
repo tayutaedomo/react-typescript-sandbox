@@ -7,6 +7,7 @@ import UseClickInside from './UseClickInside';
 import UseClickOutside from './UseClickOutside';
 import UseFetch from './UseFetch';
 import UseInterval from './UseInterval';
+import UseComponentDidMount from './UseComponentDidMount';
 
 const AwesomeHooks: VFC = () => {
   return (
@@ -29,6 +30,9 @@ const AwesomeHooks: VFC = () => {
         </Grid>
         <Grid item xs={6}>
           <UseInterval />
+        </Grid>
+        <Grid item xs={6}>
+          <UseComponentDidMount />
         </Grid>
       </Grid>
     </>
