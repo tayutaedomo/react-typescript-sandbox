@@ -1,7 +1,8 @@
 import React, { VFC } from 'react';
+import { Flex } from '@chakra-ui/react';
 
 const Graphql: VFC = () => {
-  return <div>GraphQL</div>;
+  return <Flex>GraphQL</Flex>;
 };
 
 export default Graphql;
