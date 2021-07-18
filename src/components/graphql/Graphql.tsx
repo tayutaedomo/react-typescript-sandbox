@@ -1,8 +1,15 @@
 import React, { VFC } from 'react';
-import { Flex } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
+
+import GetStarted from './pages/GetStarted';
 
 const Graphql: VFC = () => {
-  return <Flex>GraphQL</Flex>;
+  return (
+    <Box>
+      <Heading as="h1">GraphQL</Heading>
+      <GetStarted />
+    </Box>
+  );
 };
 
 export default Graphql;
