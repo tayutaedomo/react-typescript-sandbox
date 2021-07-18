@@ -1,62 +1,63 @@
 import React, { createContext, useState, VFC } from 'react';
-import { Box, Button, Input, Stack } from '@chakra-ui/react';
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { Box, Button, Heading, Input, Stack } from '@chakra-ui/react';
+import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { createApolloClient } from '../client';
 
-export const ApolloClientContext = createContext<ApolloClient<InMemoryCache>>(
-  null
-);
+type Props = {
+  apolloClient: ApolloClient<NormalizedCacheObject>;
+  setApolloClient: (client: ApolloClient<NormalizedCacheObject>) => void;
+};
 
-const Token: VFC = () => {
+const Token: VFC<Props> = (props) => {
+  const { apolloClient, setApolloClient } = props;
+
   const [inputType, setInputType] = useState<string>('text');
 
   const [token, setToken] = useState<string>('');
   const handleChange = (event) => setToken(event.target.value);
 
-  const [client, setClient] = useState<ApolloClient<InMemoryCache>>(null);
-
   const handleSave = (event) => {
     const client = createApolloClient(token);
-    // console.log({ token, client });
-    setClient(client);
+    setApolloClient(client);
     setInputType('password');
   };
 
   const handleClear = (event) => {
-    setClient(null);
+    setApolloClient(null);
     setInputType('text');
   };
 
   return (
-    <ApolloClientContext.Provider value={client}>
-      <Box>
-        <Stack direction="row" spacing={4}>
-          <Input
-            type={inputType}
-            value={token}
-            onChange={handleChange}
-            placeholder="Type your github access token"
-            disabled={client != null}
-          />
-          <Button
-            colorScheme="teal"
-            variant="solid"
-            onClick={handleSave}
-            disabled={client != null || token == ''}
-          >
-            Save
-          </Button>
-          <Button
-            colorScheme="teal"
-            variant="outline"
-            onClick={handleClear}
-            disabled={client == null}
-          >
-            Clear
-          </Button>
-        </Stack>
-      </Box>
-    </ApolloClientContext.Provider>
+    <Box my="5">
+      <Heading as="h2" size="md">
+        Access Token
+      </Heading>
+      <Stack direction="row" spacing={4}>
+        <Input
+          type={inputType}
+          value={token}
+          onChange={handleChange}
+          placeholder="Type your github access token"
+          disabled={apolloClient != null}
+        />
+        <Button
+          colorScheme="teal"
+          variant="solid"
+          onClick={handleSave}
+          disabled={apolloClient != null || token == ''}
+        >
+          Save
+        </Button>
+        <Button
+          colorScheme="teal"
+          variant="outline"
+          onClick={handleClear}
+          disabled={apolloClient == null}
+        >
+          Clear
+        </Button>
+      </Stack>
+    </Box>
   );
 };
 
