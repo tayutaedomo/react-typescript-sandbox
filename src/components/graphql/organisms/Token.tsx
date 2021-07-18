@@ -1,4 +1,4 @@
-import React, { createContext, useState, VFC } from 'react';
+import React, { useState, VFC } from 'react';
 import { Box, Button, Heading, Input, Stack } from '@chakra-ui/react';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 import { createApolloClient } from '../client';
@@ -38,13 +38,13 @@ const Token: VFC<Props> = (props) => {
           value={token}
           onChange={handleChange}
           placeholder="Type your github access token"
-          disabled={apolloClient != null}
+          disabled={apolloClient !== null}
         />
         <Button
           colorScheme="teal"
           variant="solid"
           onClick={handleSave}
-          disabled={apolloClient != null || token == ''}
+          disabled={apolloClient !== null || token === ''}
         >
           Save
         </Button>
@@ -52,7 +52,7 @@ const Token: VFC<Props> = (props) => {
           colorScheme="teal"
           variant="outline"
           onClick={handleClear}
-          disabled={apolloClient == null}
+          disabled={apolloClient === null}
         >
           Clear
         </Button>

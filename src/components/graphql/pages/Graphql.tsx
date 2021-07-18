@@ -3,7 +3,7 @@ import { Box, Heading } from '@chakra-ui/react';
 import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 
 import Token from '../organisms/Token';
-import User from '../organisms/User';
+import QueryUser from '../organisms/QueryUser';
 
 export const ApolloClientContext = createContext<
   ApolloClient<NormalizedCacheObject>
@@ -19,6 +19,7 @@ const Graphql: VFC = () => {
       <Box>
         <Heading as="h1">GraphQL</Heading>
         <Token apolloClient={apolloClient} setApolloClient={setApolloClient} />
+        <QueryUser />
       </Box>
     </ApolloClientContext.Provider>
   );
