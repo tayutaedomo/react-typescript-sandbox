@@ -15,7 +15,7 @@ import ChakraUIHeaderLayout from '../components/chakraui/templates/HeaderLayout'
 import Practice3 from '../components/practice3/Practice3';
 import Burden from '../components/burden/Burden';
 import AwesomeHooks from '../components/awesome_hooks/AwesomeHooks';
-import Graphql from '../components/graphql/Graphql';
+import Graphql from '../components/graphql/pages/Graphql';
 import ChakraUISimpleProvider from '../providers/ChakraUISimpleProvider';
 import GraphqlHeaderLayout from '../components/graphql/templates/HeaderLayout';
 
