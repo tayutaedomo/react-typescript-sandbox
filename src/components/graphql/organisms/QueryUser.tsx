@@ -3,6 +3,7 @@ import { ApolloProvider } from '@apollo/client';
 import {
   Box,
   Button,
+  Flex,
   Heading,
   Image,
   Input,
@@ -11,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 
 import { ApolloClientContext } from '../pages/Graphql';
-import { ME } from '../graphql';
+import { USER } from '../graphql';
 
 type UserType = {
   name: string;
@@ -27,7 +28,7 @@ const QueryUser: VFC = () => {
   const handleClick = async (event, apolloClient) => {
     try {
       const result = await apolloClient.query({
-        query: ME,
+        query: USER,
         variables: { login },
       });
 
@@ -72,14 +73,10 @@ const QueryUser: VFC = () => {
         }}
       </ApolloClientContext.Consumer>
       {user ? (
-        <>
-          <Box>
-            <Text>Name: {user.name}</Text>
-          </Box>
-          <Box>
-            <Image src={user.avatarUrl} alt="User Avatar" boxSize="64" />
-          </Box>
-        </>
+        <Flex my="2">
+          <Text>Name: {user.name}</Text>
+          <Image src={user.avatarUrl} alt="User Avatar" boxSize="16" mx="2" />
+        </Flex>
       ) : (
         <></>
       )}

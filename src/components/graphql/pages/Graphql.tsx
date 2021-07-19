@@ -1,9 +1,14 @@
 import React, { createContext, useState, VFC } from 'react';
-import { Box, Heading } from '@chakra-ui/react';
-import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
+import { Heading } from '@chakra-ui/react';
+import {
+  ApolloClient,
+  ApolloProvider,
+  NormalizedCacheObject,
+} from '@apollo/client';
 
 import Token from '../organisms/Token';
-import QueryUser from '../organisms/QueryUser';
+// import QueryUser from '../organisms/QueryUser';
+import QueryViewer from '../organisms/QueryViewer';
 
 export const ApolloClientContext = createContext<
   ApolloClient<NormalizedCacheObject>
@@ -16,11 +21,14 @@ const Graphql: VFC = () => {
 
   return (
     <ApolloClientContext.Provider value={apolloClient}>
-      <Box>
-        <Heading as="h1">GraphQL</Heading>
-        <Token apolloClient={apolloClient} setApolloClient={setApolloClient} />
-        <QueryUser />
-      </Box>
+      <Heading as="h1">GraphQL</Heading>
+      <Token apolloClient={apolloClient} setApolloClient={setApolloClient} />
+      {apolloClient && (
+        <ApolloProvider client={apolloClient}>
+          <QueryViewer />
+        </ApolloProvider>
+      )}
+      {/* <QueryUser /> */}
     </ApolloClientContext.Provider>
   );
 };
