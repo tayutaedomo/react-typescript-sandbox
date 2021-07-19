@@ -1,18 +1,10 @@
 import React, { useState, VFC } from 'react';
 import { ApolloProvider } from '@apollo/client';
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Image,
-  Input,
-  Stack,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Button, Heading, Input, Stack } from '@chakra-ui/react';
 
 import { ApolloClientContext } from '../pages/Graphql';
 import { USER } from '../graphql';
+import User from '../molecules/User';
 
 type UserType = {
   name: string;
@@ -73,10 +65,9 @@ const QueryUser: VFC = () => {
         }}
       </ApolloClientContext.Consumer>
       {user ? (
-        <Flex my="2">
-          <Text>Name: {user.name}</Text>
-          <Image src={user.avatarUrl} alt="User Avatar" boxSize="16" mx="2" />
-        </Flex>
+        <Box py="2">
+          <User name={user.name} avatarUrl={user.avatarUrl} />
+        </Box>
       ) : (
         <></>
       )}

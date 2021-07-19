@@ -1,8 +1,9 @@
 import React, { VFC } from 'react';
 import { useQuery } from '@apollo/client';
-import { Box, Flex, Heading, Image, Text } from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 
 import { VIEWER } from '../graphql';
+import User from '../molecules/User';
 
 const QueryViewer: VFC = () => {
   const { loading, error, data } = useQuery(VIEWER);
@@ -19,15 +20,12 @@ const QueryViewer: VFC = () => {
           {error ? (
             <Text>Query Failed</Text>
           ) : (
-            <Flex>
-              <Text>Login: {data.viewer.login}</Text>
-              <Image
-                src={data.viewer.avatarUrl}
-                alt="User Avatar"
-                boxSize="16"
-                mx="2"
+            <>
+              <User
+                login={data.viewer.login}
+                avatarUrl={data.viewer.avatarUrl}
               />
-            </Flex>
+            </>
           )}
         </>
       )}

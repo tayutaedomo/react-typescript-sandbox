@@ -7,7 +7,6 @@ import {
 } from '@apollo/client';
 
 import Token from '../organisms/Token';
-// import QueryUser from '../organisms/QueryUser';
 import QueryViewer from '../organisms/QueryViewer';
 
 export const ApolloClientContext = createContext<
