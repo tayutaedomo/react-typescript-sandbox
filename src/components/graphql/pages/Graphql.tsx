@@ -8,6 +8,7 @@ import {
 
 import Token from '../organisms/Token';
 import QueryViewer from '../organisms/QueryViewer';
+import QueryRepositories from '../organisms/QueryRepositories';
 
 export const ApolloClientContext = createContext<
   ApolloClient<NormalizedCacheObject>
@@ -25,6 +26,7 @@ const Graphql: VFC = () => {
       {apolloClient && (
         <ApolloProvider client={apolloClient}>
           <QueryViewer />
+          <QueryRepositories />
         </ApolloProvider>
       )}
       {/* <QueryUser /> */}
