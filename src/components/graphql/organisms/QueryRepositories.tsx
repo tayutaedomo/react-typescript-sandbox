@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { Box, Heading, Input, Text } from '@chakra-ui/react';
 
 import { SEARCH_REPOSITORIES } from '../graphql';
-import Repositries from '../molecules/Repositries';
+import Repositries from '../molecules/Repositories';
 
 type Variables = {
   first?: number;
