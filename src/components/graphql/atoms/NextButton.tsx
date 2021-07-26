@@ -10,7 +10,7 @@ const NextButton: VFC<Props> = ({ hasNext, onClick }) => {
   if (!hasNext) return <></>;
 
   return (
-    <Button variant="solid" colorScheme="teal" size="xs" onClick={onClick}>
+    <Button variant="solid" colorScheme="teal" size="sm" onClick={onClick}>
       Next
     </Button>
   );
