@@ -25,7 +25,8 @@ const Repositories: VFC<Props> = ({ response, goNext, goPrevious }) => {
               <ResultItem node={edge.node} />
               <StarButton
                 totalCount={edge.node.stargazers.totalCount}
-                hasStarted={edge.node.viewerHasStarred}
+                hasStarred={edge.node.viewerHasStarred}
+                starrableId={edge.node.id}
               />
             </Stack>
           </ListItem>
