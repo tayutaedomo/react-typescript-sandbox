@@ -1,7 +1,7 @@
 import React, { VFC } from 'react';
 import { useMutation } from '@apollo/client';
 
-import { ADD_STAR } from '../graphql';
+import { ADD_STAR, REMOVE_STAR } from '../graphql';
 import StarStatus from '../atoms/StarStatus';
 
 type Props = {
@@ -12,14 +12,13 @@ type Props = {
 
 const StarButton: VFC<Props> = ({ totalCount, hasStarred, starrableId }) => {
   //const [addStar, { data }] = useMutation(ADD_STAR);
-  const [addStar] = useMutation(ADD_STAR);
+  //const [addStar] = useMutation(ADD_STAR);
+  const [addOrRemoveStar] = useMutation(hasStarred ? REMOVE_STAR : ADD_STAR);
 
   const handleClick = async () => {
-    //const response = await addStar({
-    const response = await addStar({
+    await addOrRemoveStar({
       variables: { input: { starrableId: starrableId } },
     });
-    //console.log({ response });
   };
 
   return (
