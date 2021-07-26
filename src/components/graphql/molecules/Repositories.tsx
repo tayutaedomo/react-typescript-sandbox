@@ -1,7 +1,7 @@
 import React, { VFC } from 'react';
 import { Box, ListItem, Stack, UnorderedList } from '@chakra-ui/react';
 
-import { SearchResponse } from '../../../types/github';
+import { SearchResponse, SearchVariables } from '../../../types/github';
 import ResultTitle from '../atoms/ResultTitle';
 import ResultItem from './ResultItem';
 import NextButton from '../atoms/NextButton';
@@ -9,12 +9,18 @@ import PreviousButton from '../atoms/PreviousButton';
 import StarButton from './StarButton';
 
 type Props = {
+  variables: SearchVariables;
   response: SearchResponse;
   goPrevious: (startCursor: string) => void;
   goNext: (endCursor: string) => void;
 };
 
-const Repositories: VFC<Props> = ({ response, goNext, goPrevious }) => {
+const Repositories: VFC<Props> = ({
+  variables,
+  response,
+  goNext,
+  goPrevious,
+}) => {
   return (
     <Box my="2">
       <ResultTitle count={response.search.repositoryCount} />
@@ -24,6 +30,7 @@ const Repositories: VFC<Props> = ({ response, goNext, goPrevious }) => {
             <Stack direction="row" spacing="2">
               <ResultItem node={edge.node} />
               <StarButton
+                searchVariables={variables}
                 totalCount={edge.node.stargazers.totalCount}
                 hasStarred={edge.node.viewerHasStarred}
                 starrableId={edge.node.id}

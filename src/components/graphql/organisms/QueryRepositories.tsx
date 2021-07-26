@@ -4,18 +4,11 @@ import { Box, Heading, Input, Text } from '@chakra-ui/react';
 
 import { SEARCH_REPOSITORIES } from '../graphql';
 import Repositories from '../molecules/Repositories';
-
-type Variables = {
-  first?: number;
-  after?: string;
-  last?: number;
-  before?: string;
-  query: string;
-};
+import { SearchVariables } from '../../../types/github';
 
 const PER_PAGE = 5;
 
-const DEFAULT_VARIABLES: Variables = {
+const DEFAULT_VARIABLES: SearchVariables = {
   first: PER_PAGE,
   after: null,
   last: null,
@@ -24,7 +17,9 @@ const DEFAULT_VARIABLES: Variables = {
 };
 
 const QueryRepositories: VFC = () => {
-  const [variables, setVariables] = useState<Variables>(DEFAULT_VARIABLES);
+  const [variables, setVariables] = useState<SearchVariables>(
+    DEFAULT_VARIABLES
+  );
 
   const { loading, error, data } = useQuery(SEARCH_REPOSITORIES, {
     variables: variables,
@@ -71,6 +66,7 @@ const QueryRepositories: VFC = () => {
             <Text>Query Failed</Text>
           ) : (
             <Repositories
+              variables={variables}
               response={data}
               goPrevious={goPrevious}
               goNext={goNext}

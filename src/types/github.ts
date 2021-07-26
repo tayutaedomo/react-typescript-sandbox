@@ -31,3 +31,11 @@ type PageInfo = {
   hasPreviousPage: boolean;
   startCursor: string;
 };
+
+export type SearchVariables = {
+  first?: number;
+  after?: string;
+  last?: number;
+  before?: string;
+  query: string;
+};
