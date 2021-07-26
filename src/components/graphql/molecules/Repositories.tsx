@@ -1,8 +1,9 @@
 import React, { VFC } from 'react';
-import { Box, Heading, List, ListItem, Text } from '@chakra-ui/react';
+import { Box, List, ListItem } from '@chakra-ui/react';
 
 import { SearchResponse } from '../../../types/github';
 import ResultTitle from '../atoms/ResultTitle';
+import ResultItem from './ResultItem';
 
 type Props = {
   response: SearchResponse;
@@ -15,7 +16,7 @@ const Repositories: VFC<Props> = ({ response }) => {
       <List>
         {response.search.edges.map((edge) => (
           <ListItem key={edge.node.id}>
-            <Text>{edge.node.name}</Text>
+            <ResultItem node={edge.node} />
           </ListItem>
         ))}
       </List>

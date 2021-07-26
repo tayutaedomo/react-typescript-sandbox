@@ -6,7 +6,7 @@ type Props = {
 };
 
 const ResultTitle: VFC<Props> = ({ count }) => {
-  const unit = count == 1 ? 'Repository' : 'Repositories';
+  const unit = count === 1 ? 'Repository' : 'Repositories';
   const title = `Github Repositories Search Result - ${count} ${unit}`;
   return (
     <Heading as="h3" size="sm">

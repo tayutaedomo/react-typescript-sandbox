@@ -10,10 +10,10 @@ type Search = {
 
 type Edge = {
   cursor: string;
-  node: any;
+  node: Node;
 };
 
-type Node = {
+export type Node = {
   id: string;
   name: string;
   url: string;
