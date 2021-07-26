@@ -23,7 +23,10 @@ const Repositories: VFC<Props> = ({ response, goNext, goPrevious }) => {
           <ListItem key={edge.node.id} py="1">
             <Stack direction="row" spacing="2">
               <ResultItem node={edge.node} />
-              <StarButton totalCount={edge.node.stargazers.totalCount} />
+              <StarButton
+                totalCount={edge.node.stargazers.totalCount}
+                hasStarted={edge.node.viewerHasStarred}
+              />
             </Stack>
           </ListItem>
         ))}
