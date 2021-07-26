@@ -1,5 +1,5 @@
 import React, { createContext, useState, VFC } from 'react';
-import { Heading } from '@chakra-ui/react';
+import { Box, Heading } from '@chakra-ui/react';
 import {
   ApolloClient,
   ApolloProvider,
@@ -21,14 +21,16 @@ const Graphql: VFC = () => {
 
   return (
     <ApolloClientContext.Provider value={apolloClient}>
-      <Heading as="h1">GraphQL</Heading>
-      <Token apolloClient={apolloClient} setApolloClient={setApolloClient} />
-      {apolloClient && (
-        <ApolloProvider client={apolloClient}>
-          <QueryViewer />
-          <QueryRepositories />
-        </ApolloProvider>
-      )}
+      <Box px="2">
+        <Heading as="h1">GraphQL</Heading>
+        <Token apolloClient={apolloClient} setApolloClient={setApolloClient} />
+        {apolloClient && (
+          <ApolloProvider client={apolloClient}>
+            <QueryViewer />
+            <QueryRepositories />
+          </ApolloProvider>
+        )}
+      </Box>
       {/* <QueryUser /> */}
     </ApolloClientContext.Provider>
   );

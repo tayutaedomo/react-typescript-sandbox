@@ -37,6 +37,16 @@ const QueryRepositories: VFC = () => {
     });
   };
 
+  const goPrevious = (startCursor: string) => {
+    setVariables({
+      first: null,
+      after: null,
+      last: PER_PAGE,
+      before: startCursor,
+      query: variables.query,
+    });
+  };
+
   const goNext = (endCursor: string) => {
     setVariables({
       first: PER_PAGE,
@@ -60,7 +70,11 @@ const QueryRepositories: VFC = () => {
           {error ? (
             <Text>Query Failed</Text>
           ) : (
-            <Repositories response={data} goNext={goNext} />
+            <Repositories
+              response={data}
+              goPrevious={goPrevious}
+              goNext={goNext}
+            />
           )}
         </>
       )}
