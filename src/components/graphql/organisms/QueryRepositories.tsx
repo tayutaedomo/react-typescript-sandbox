@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { Box, Heading, Input, Text } from '@chakra-ui/react';
 
 import { SEARCH_REPOSITORIES } from '../graphql';
-import Repositries from '../molecules/Repositories';
+import Repositories from '../molecules/Repositories';
 
 type Variables = {
   first?: number;
@@ -13,8 +13,10 @@ type Variables = {
   query: string;
 };
 
+const PER_PAGE = 5;
+
 const DEFAULT_VARIABLES: Variables = {
-  first: 5,
+  first: PER_PAGE,
   after: null,
   last: null,
   before: null,
@@ -35,6 +37,16 @@ const QueryRepositories: VFC = () => {
     });
   };
 
+  const goNext = (endCursor: string) => {
+    setVariables({
+      first: PER_PAGE,
+      after: endCursor,
+      last: null,
+      before: null,
+      query: variables.query,
+    });
+  };
+
   return (
     <Box my="4">
       <Heading as="h2" size="md">
@@ -45,7 +57,11 @@ const QueryRepositories: VFC = () => {
         <Text>Loading</Text>
       ) : (
         <>
-          {error ? <Text>Query Failed</Text> : <Repositries response={data} />}
+          {error ? (
+            <Text>Query Failed</Text>
+          ) : (
+            <Repositories response={data} goNext={goNext} />
+          )}
         </>
       )}
     </Box>

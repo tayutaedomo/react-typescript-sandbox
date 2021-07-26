@@ -1,5 +1,5 @@
 import React, { VFC } from 'react';
-import { Link, ListItem, Text } from '@chakra-ui/react';
+import { Link, Text } from '@chakra-ui/react';
 
 import { Node } from '../../../types/github';
 

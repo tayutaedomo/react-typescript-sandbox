@@ -4,12 +4,14 @@ import { Box, List, ListItem } from '@chakra-ui/react';
 import { SearchResponse } from '../../../types/github';
 import ResultTitle from '../atoms/ResultTitle';
 import ResultItem from './ResultItem';
+import NextButton from '../atoms/NextButton';
 
 type Props = {
   response: SearchResponse;
+  goNext: (endCursor: string) => void;
 };
 
-const Repositories: VFC<Props> = ({ response }) => {
+const Repositories: VFC<Props> = ({ response, goNext }) => {
   return (
     <Box my="2">
       <ResultTitle count={response.search.repositoryCount} />
@@ -20,6 +22,12 @@ const Repositories: VFC<Props> = ({ response }) => {
           </ListItem>
         ))}
       </List>
+      <NextButton
+        hasNext={response.search.pageInfo.hasNextPage}
+        onClick={() => {
+          goNext(response.search.pageInfo.endCursor);
+        }}
+      />
     </Box>
   );
 };
