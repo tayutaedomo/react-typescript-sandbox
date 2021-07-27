@@ -19,10 +19,12 @@ export type Node = {
   url: string;
   viewerHasStarred: boolean;
   stargazers: Stargazers;
+  __typename: string;
 };
 
 export type Stargazers = {
   totalCount: number;
+  __typename: string;
 };
 
 type PageInfo = {

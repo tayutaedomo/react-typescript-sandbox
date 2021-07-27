@@ -4,7 +4,6 @@ import { useMutation } from '@apollo/client';
 import { ADD_STAR, REMOVE_STAR, SEARCH_REPOSITORIES } from '../graphql';
 import { SearchResponse, SearchVariables, Edge } from '../../../types/github';
 import StarStatus from '../atoms/StarStatus';
-import { useState } from 'react';
 
 type Props = {
   searchVariables: SearchVariables;
@@ -19,7 +18,6 @@ const StarButtonWithWriteQuery: VFC<Props> = ({
   hasStarred,
   starrableId,
 }) => {
-  const [count, setCount] = useState(totalCount);
   const [addOrRemoveStar] = useMutation(hasStarred ? REMOVE_STAR : ADD_STAR);
 
   const handleClick = async () => {
@@ -43,10 +41,13 @@ const StarButtonWithWriteQuery: VFC<Props> = ({
                 name: edge.node.name,
                 url: edge.node.url,
                 viewerHasStarred: starrable.viewerHasStarred,
-                stargazers: { totalCount: newTotalCount },
+                stargazers: {
+                  totalCount: newTotalCount,
+                  __typename: 'StargazerConnection',
+                },
+                __typename: 'Repository',
               },
             };
-            setCount(newTotalCount);
             return newEdge;
           } else {
             return edge;
@@ -61,6 +62,7 @@ const StarButtonWithWriteQuery: VFC<Props> = ({
         };
         cache.writeQuery({
           query: SEARCH_REPOSITORIES,
+          variables: { ...searchVariables },
           data: newData,
         });
       },
@@ -69,7 +71,7 @@ const StarButtonWithWriteQuery: VFC<Props> = ({
 
   return (
     <StarStatus
-      totalCount={count}
+      totalCount={totalCount}
       hasStarred={hasStarred}
       onClick={handleClick}
     />
