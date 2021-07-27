@@ -7,6 +7,7 @@ import ResultItem from './ResultItem';
 import NextButton from '../atoms/NextButton';
 import PreviousButton from '../atoms/PreviousButton';
 import StarButton from './StarButton';
+import StarButtonWithWriteQuery from './StarButtonWithWriteQuery';
 
 type Props = {
   variables: SearchVariables;
@@ -30,6 +31,12 @@ const Repositories: VFC<Props> = ({
             <Stack direction="row" spacing="2">
               <ResultItem node={edge.node} />
               <StarButton
+                searchVariables={variables}
+                totalCount={edge.node.stargazers.totalCount}
+                hasStarred={edge.node.viewerHasStarred}
+                starrableId={edge.node.id}
+              />
+              <StarButtonWithWriteQuery
                 searchVariables={variables}
                 totalCount={edge.node.stargazers.totalCount}
                 hasStarred={edge.node.viewerHasStarred}

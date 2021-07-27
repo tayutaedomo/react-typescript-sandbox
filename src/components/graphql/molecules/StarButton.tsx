@@ -2,8 +2,8 @@ import React, { VFC } from 'react';
 import { useMutation } from '@apollo/client';
 
 import { ADD_STAR, REMOVE_STAR, SEARCH_REPOSITORIES } from '../graphql';
-import StarStatus from '../atoms/StarStatus';
 import { SearchVariables } from '../../../types/github';
+import StarStatus from '../atoms/StarStatus';
 
 type Props = {
   searchVariables: SearchVariables;

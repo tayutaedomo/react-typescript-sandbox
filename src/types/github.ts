@@ -8,7 +8,7 @@ type Search = {
   repositoryCount: number;
 };
 
-type Edge = {
+export type Edge = {
   cursor: string;
   node: Node;
 };
@@ -21,7 +21,7 @@ export type Node = {
   stargazers: Stargazers;
 };
 
-type Stargazers = {
+export type Stargazers = {
   totalCount: number;
 };
 
