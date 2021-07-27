@@ -1,6 +1,6 @@
-import React, { useState, VFC } from 'react';
+import React, { useRef, useState, VFC } from 'react';
 import { useQuery } from '@apollo/client';
-import { Box, Heading, Input, Text } from '@chakra-ui/react';
+import { Box, Button, Heading, Input, Stack, Text } from '@chakra-ui/react';
 
 import { SEARCH_REPOSITORIES } from '../graphql';
 import Repositories from '../molecules/Repositories';
@@ -13,10 +13,12 @@ const DEFAULT_VARIABLES: SearchVariables = {
   after: null,
   last: null,
   before: null,
-  query: 'フロントエンドエンジニア',
+  query: '',
 };
 
 const QueryRepositories: VFC = () => {
+  const myRef = useRef<HTMLInputElement>();
+
   const [variables, setVariables] = useState<SearchVariables>(
     DEFAULT_VARIABLES
   );
@@ -25,10 +27,10 @@ const QueryRepositories: VFC = () => {
     variables: variables,
   });
 
-  const handleChange = (e) => {
+  const handleClick = (e) => {
     setVariables({
       ...DEFAULT_VARIABLES,
-      query: e.target.value,
+      query: myRef.current.value,
     });
   };
 
@@ -57,7 +59,12 @@ const QueryRepositories: VFC = () => {
       <Heading as="h2" size="md">
         Query Repositories
       </Heading>
-      <Input value={variables.query} onChange={handleChange} />
+      <Stack direction="row">
+        <Input ref={myRef} />
+        <Button colorScheme="teal" variant="solid" onClick={handleClick}>
+          Search
+        </Button>
+      </Stack>
       {loading ? (
         <Text>Loading</Text>
       ) : (

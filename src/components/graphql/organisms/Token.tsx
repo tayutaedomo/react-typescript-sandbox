@@ -32,7 +32,7 @@ const Token: VFC<Props> = (props) => {
       <Heading as="h2" size="md">
         Access Token
       </Heading>
-      <Stack direction="row" spacing={4}>
+      <Stack direction="row">
         <Input
           type={inputType}
           value={token}
