@@ -25,7 +25,8 @@ const StarButtonWithWriteQuery: VFC<Props> = ({
   const handleClick = async () => {
     await addOrRemoveStar({
       variables: { input: { starrableId: starrableId } },
-      update: (cache) => {
+      update: (cache, { data: { addStar, removeStar } }) => {
+        const { starrable } = addStar || removeStar;
         const data: SearchResponse = cache.readQuery({
           query: SEARCH_REPOSITORIES,
           variables: { ...searchVariables },
@@ -33,7 +34,7 @@ const StarButtonWithWriteQuery: VFC<Props> = ({
         const edges = data.search.edges;
         const newEdges = edges.map((edge) => {
           if (edge.node.id === starrableId) {
-            const diff = hasStarred ? -1 : 1;
+            const diff = starrable.viewerHasStarred ? 1 : -1;
             const newTotalCount = edge.node.stargazers.totalCount + diff;
             const newEdge: Edge = {
               cursor: edge.cursor,
@@ -41,7 +42,7 @@ const StarButtonWithWriteQuery: VFC<Props> = ({
                 id: edge.node.id,
                 name: edge.node.name,
                 url: edge.node.url,
-                viewerHasStarred: edge.node.viewerHasStarred,
+                viewerHasStarred: starrable.viewerHasStarred,
                 stargazers: { totalCount: newTotalCount },
               },
             };
@@ -58,8 +59,10 @@ const StarButtonWithWriteQuery: VFC<Props> = ({
             repositoryCount: data.search.repositoryCount,
           },
         };
-        console.log({ newData });
-        cache.writeQuery({ query: SEARCH_REPOSITORIES, data: newData });
+        cache.writeQuery({
+          query: SEARCH_REPOSITORIES,
+          data: newData,
+        });
       },
     });
   };
