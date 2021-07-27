@@ -96,6 +96,29 @@ export const cards: Array<HomeCardType> = [
     ),
     to: '/awesome_hooks',
   },
+  {
+    headline: 'GraphQL with Apollo client',
+    content: (
+      <>
+        <a
+          href="https://docs.github.com/ja/graphql"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Github GraphQL
+        </a>
+        ,&nbsp;
+        <a
+          href="https://www.apollographql.com/docs/react/get-started/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Apollo Client
+        </a>
+      </>
+    ),
+    to: '/graphql',
+  },
 ];
 
 export default Home;

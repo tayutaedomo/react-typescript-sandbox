@@ -15,6 +15,9 @@ import ChakraUIHeaderLayout from '../components/chakraui/templates/HeaderLayout'
 import Practice3 from '../components/practice3/Practice3';
 import Burden from '../components/burden/Burden';
 import AwesomeHooks from '../components/awesome_hooks/AwesomeHooks';
+import Graphql from '../components/graphql/pages/Graphql';
+import ChakraUISimpleProvider from '../providers/ChakraUISimpleProvider';
+import GraphqlHeaderLayout from '../components/graphql/templates/HeaderLayout';
 
 const Router = memo(() => {
   return (
@@ -74,6 +77,13 @@ const Router = memo(() => {
           <DefaultLayout>
             <AwesomeHooks />
           </DefaultLayout>
+        </Route>
+        <Route path="/graphql">
+          <ChakraUISimpleProvider>
+            <GraphqlHeaderLayout>
+              <Graphql />
+            </GraphqlHeaderLayout>
+          </ChakraUISimpleProvider>
         </Route>
         <Route path="*">
           <Page404 />
